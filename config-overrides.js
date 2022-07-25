@@ -1,4 +1,10 @@
-const { override, addLessLoader, fixBabelImports } = require('customize-cra');
+const {
+  override,
+  addLessLoader,
+  fixBabelImports,
+  addWebpackAlias,
+} = require('customize-cra');
+const path = require('path');
 
 module.exports = {
   webpack: override(
@@ -9,6 +15,10 @@ module.exports = {
       libraryName: 'antd',
       libraryDirectory: 'es',
       style: true,
+    }),
+    // 配置路径别名
+    addWebpackAlias({
+      '@': path.resolve(__dirname, 'src'),
     })
   ),
 };
